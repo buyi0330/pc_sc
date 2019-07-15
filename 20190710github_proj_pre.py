@@ -16,8 +16,8 @@ directory_2 = "/kellogg/proj/ybo1623/github_processed"
 for filename in os.listdir(directory_1):
 
     if filename.endswith(".json"):
-        outFile = open(str(directory_2) + '/' + str(filename), "w", encoding = "utf8")
-        with open(directory_1 + "/" + filename, "r", encoding="utf8") as json_file:
+        outFile = open(str(directory_2) + '/' + str(filename), "w", "utf8")
+        with open(directory_1 + "/" + filename, "r", "utf8") as json_file:
             for line in json_file:
                 line = line.strip()
                 data = json.loads(line)
