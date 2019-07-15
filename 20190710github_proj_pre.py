@@ -12,6 +12,7 @@ targetEvent_list = ["PushEvent", "PullRequestEvent", "PullRequestReviewEvent", "
 directory_1 = "/kellogg/proj/ybo1623/github_raw"
 directory_2 = "/kellogg/proj/ybo1623/github_processed"
 for filename in os.listdir(directory_1):
+	print filename
     if filename.endswith(".json"): 
         outFile = open(str(directory_2) + str(filename), "w")
         with open(filename, "r") as json_file:
@@ -20,3 +21,4 @@ for filename in os.listdir(directory_1):
                 data = json.load(line)
                 if data["type"] in targetEvent_list:
                     outFile.write(line)
+	break
