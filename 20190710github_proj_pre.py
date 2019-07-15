@@ -11,14 +11,15 @@ import json
 targetEvent_list = ["PushEvent", "PullRequestEvent", "PullRequestReviewEvent", "PullRequestReviewCommentEvent", "PushEvent", "ForkEvent", "DownloadEvent", "CommitCommentEvent"]
 directory_1 = "/kellogg/proj/ybo1623/github_raw"
 directory_2 = "/kellogg/proj/ybo1623/github_processed"
+#directory_1 = "C:/Users/Yi Bu/Desktop"
+#directory_2 = "C:/Users/Yi Bu/Desktop/111"
 for filename in os.listdir(directory_1):
-	print filename
-    if filename.endswith(".json"): 
-        outFile = open(str(directory_2) + str(filename), "w")
-        with open(filename, "r") as json_file:
+
+    if filename.endswith(".json"):
+        outFile = open(str(directory_2) + '/' + str(filename), "w", encoding = "utf8")
+        with open(directory_1 + "/" + filename, "r", encoding="utf8") as json_file:
             for line in json_file:
                 line = line.strip()
-                data = json.load(line)
+                data = json.loads(line)
                 if data["type"] in targetEvent_list:
-                    outFile.write(line)
-	break
+                    outFile.write(line + "\n")
