@@ -4,7 +4,7 @@ Created on Fri Jul 26 14:10:53 2019
 
 @author: Yi Bu
 """
-from collections import defaultlist
+from collections import defaultdict
 
 keyword_list = ["causal inference", "propensity score", "potential outcome", "potential outcomes", "causality"
                 ,"counterfactual", "counterfactuals", "causation", "causal effect", "causal effects"]
