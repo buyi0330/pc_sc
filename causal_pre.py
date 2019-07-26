@@ -30,8 +30,8 @@ for line in year_file:
 print "3. citing"
 citing_file = open("/home/buyi/Desktop/wos/wos_citing.txt", "r")
 citing_file.readline()
-citing_cited = default(list)
-cited_citing = default(list)
+citing_cited = defaultdict(list)
+cited_citing = defaultdict(list)
 for line in citing_file:
     line = line.strip().split("======")
     citing_cited[int(line[1])].append(int(line[0]))
@@ -49,7 +49,7 @@ for line in journal_file:
 print "5. author"
 author_file = open("/home/buyi/Desktop/wos/wos_author.txt", "r")
 author_file.readline()
-int_author = default(list)
+int_author = defaultdict(list)
 for line in author_file:
     line = line.strip().split("======")
     int_author[int(line[0])].append(line[2])
@@ -73,7 +73,7 @@ for line in title_file:
 print "8. subject"
 subject_file = open("/home/buyi/Desktop/wos/wos_subject.txt", "r")
 subject_file.readline()
-int_subject = default(list)
+int_subject = defaultdict(list)
 for line in subject_file:
     line = line.strip().split("======")
     int_subject[int(line[0])].append(line[2])
