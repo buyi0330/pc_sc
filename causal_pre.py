@@ -95,7 +95,7 @@ for line in keywords_file:
 print "10. output_1"
 outFile_1 = open("/home/buyi/Desktop/causal_pre.txt", "w")
 outFile_1.write("int_id, wos_id, year, subject, doctype, journal, title, keywords\n")
-for paper in int_str.keys():
+for paper in int_keywords.keys():
     flag = 0
     for keyword in keyword_list:
         if keyword in int_keywords[paper]:
@@ -115,7 +115,7 @@ for paper in int_str.keys():
 print "11. output_2"
 outFile_2 = open("/home/buyi/Desktop/causal_pre_citation.txt", "w")
 outFile_2.write("int_id_target, int_id_citation\n")
-for paper in int_str.keys():
+for paper in int_keywords.keys():
     flag = 0
     for keyword in keyword_list:
         if keyword in int_keywords[paper]:
@@ -129,7 +129,7 @@ for paper in int_str.keys():
 print "12. output_3"
 outFile_3 = open("/home/buyi/Desktop/causal_pre_ref.txt", "w")
 outFile_3.write("int_id_target, int_id_ref\n")
-for paper in int_str.keys():
+for paper in int_keywords.keys():
     flag = 0
     for keyword in keyword_list:
         if keyword in int_keywords[paper]:
