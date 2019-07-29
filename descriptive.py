@@ -9,7 +9,7 @@ import os
 import json
 import re
 from collections import defaultdict
-import matplotlob.pyplot as plt
+#import matplotlob.pyplot as plt
 
 path = "/kellogg/proj/ybo1623/github_processed/"
 files = []
