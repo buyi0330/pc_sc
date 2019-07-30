@@ -110,7 +110,9 @@ for paper in int_keywords.keys():
         temp.append(int_journal[paper])
         temp.append(int_title[paper])
         temp.append(int_keywords[paper])
-        outFile_1.write("======".join(temp) + "\n")
+        for item in temp:
+            outFile_1.write(str(item) + "======")
+        outFile_1.write("\n")
 
 print "11. output_2"
 outFile_2 = open("/home/buyi/Desktop/causal_pre_citation.txt", "w")
@@ -122,7 +124,7 @@ for paper in int_keywords.keys():
             flag = 1
     if flag == 1:
         temp = []
-        if len(citing_cited[paper]) > 0:
+        if paper in citing_cited.keys():
             for item in citing_cited[paper]:
                 outFile_2.write(str(paper) + "======" + str(item) + "\n")
 
@@ -136,6 +138,6 @@ for paper in int_keywords.keys():
             flag = 1
     if flag == 1:
         temp = []
-        if len(cited_citing[paper]) > 0:
+        if paper in cited_citing.keys():
             for item in cited_citing[paper]:
                 outFile_3.write(str(paper) + "======" + str(item) + "\n")
