@@ -60,7 +60,7 @@ for repo in repo_user.keys():
     push_temp = 0
     pull_temp = 0
     fork_temp = 0
-    for event in repo:
+    for event in repo_user[repo]:
         if event[1] == "PushEvent":
             push_temp += 1
         elif event[1] == "PullRequestEvent":
