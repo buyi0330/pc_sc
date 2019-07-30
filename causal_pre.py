@@ -110,7 +110,7 @@ for paper in int_keywords.keys():
         temp.append(int_journal[paper])
         temp.append(int_title[paper])
         temp.append(int_keywords[paper])
-        outFile.write("======".join(temp) + "\n")
+        outFile_1.write("======".join(temp) + "\n")
 
 print "11. output_2"
 outFile_2 = open("/home/buyi/Desktop/causal_pre_citation.txt", "w")
