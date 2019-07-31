@@ -103,13 +103,34 @@ for paper in int_keywords.keys():
     if flag == 1:
         temp = []
         temp.append(paper)
-        temp.append(int_str[paper])
-        temp.append(int_year[paper])
-        temp.append(int_subject[paper])
-        temp.append(int_doctype[paper])
-        temp.append(int_journal[paper])
-        temp.append(int_title[paper])
-        temp.append(int_keywords[paper])
+        try:
+            temp.append(int_str[paper])
+        except:
+            temp.append("N/A")
+        try:
+            temp.append(int_year[paper])
+        except:
+            temp.append("N/A")
+        try:
+            temp.append(int_subject[paper])
+        except:
+            temp.append("N/A")
+        try:
+            temp.append(int_doctype[paper])
+        except:
+            temp.append("N/A")
+        try:
+            temp.append(int_journal[paper])
+        except:
+            temp.append("N/A")
+        try:
+            temp.append(int_title[paper])
+        except:
+            temp.append("N/A")
+        try:
+            temp.append(int_keywords[paper])
+        except:
+            temp.append("N/A")
         for item in temp:
             outFile_1.write(str(item) + "======")
         outFile_1.write("\n")
