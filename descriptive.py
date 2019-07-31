@@ -78,13 +78,18 @@ outFile.write(str(date_push) + "\n")
 outFile.write(str(date_pull) + "\n")
 outFile.write(str(date_fork) + "\n")
 outFile.write("repo_push_count:\n")
-outFile.write(",".join(item for item in repo_push_count))
-outFile.write("\nrepo_pull_count:\n")
-outFile.write(",".join(item for item in repo_pull_count))
-outFile.write("\nrepo_fork_count:\n")
-outFile.write(",".join(item for item in repo_fork_count))
-outFile.write("\nrepo_user_count:\n")
-outFile.write(",".join(item for item in repo_user_count))
+for item in repo_push_count:
+    outFile.write(str(item) + ",")
+outFile.write("\n")
+for item in repo_pull_count:
+    outFile.write(str(item) + ",")
+outFile.write("\n")
+for item in repo_fork_count:
+    outFile.write(str(item) + ",")
+outFile.write("\n")
+for item in repo_user_count:
+    outFile.write(str(item) + ",")
+outFile.write("\n")
 
 # visualize data
 # 2. distribution of number of pushes (pulls, forks) in a repo
