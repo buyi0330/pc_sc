@@ -7,7 +7,7 @@ Created on Sun Aug  4 13:55:21 2019
 import json
 import matplotlib.pyplot as plt
 import ast
-import datetime
+from collections import Counter
 
 # Given a dictionary, return x_list as its key list, and y_list as its value list (correspondingly)
 def dic_plot (dic):
@@ -47,6 +47,8 @@ for line in inFile:
         line = line.strip().split(",")
         for index in range(len(line) - 1):
             repo_pushCount.append(int(line[index]))
+        for index in range(100):
+            print repo_pushCount[index]
     '''
     elif count == 8:
         line = line.strip().split(",")
@@ -66,7 +68,9 @@ for line in inFile:
 
     
 print "Plotting 1st..."
-plt.hist(repo_pushCount)
+print min(repo_pushCount), max(repo_pushCount)
+push_dist = Counter(repo_pushCount)
+plt.plot(repo_pushCount, "r+", markersize = 1)
 plt.title("Distribution: Number of pushes in a repo")
 plt.xlabel("number of pushes")
 plt.ylabel("number of repos with the corresponding number of pushes")
