@@ -34,14 +34,11 @@ count = 3
 for line in inFile:
     print count
     if count == 3:
-        data = json.load(line)
-        date_pushCount = json.loads(data)
+        date_pushCount = json.loads(line.strip())
     elif count == 4:
-        data = json.load(line)
-        date_pullCount = json.loads(data)
+        date_pullCount = json.loads(line.strip())
     elif count == 5:
-        data = json.load(line)
-        date_forkCount = json.loads(data)
+        date_forkCount = json.loads(line.strip())
     '''
     elif count == 7:
         line = line.strip().split(",")
