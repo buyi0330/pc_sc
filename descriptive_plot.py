@@ -7,7 +7,7 @@ Created on Sun Aug  4 13:55:21 2019
 import json
 import matplotlib.pyplot as plt
 import ast
-from datetime import datetime
+import datetime
 
 # Given a dictionary, return x_list as its key list, and y_list as its value list (correspondingly)
 def dic_plot (dic):
@@ -43,7 +43,6 @@ for line in inFile:
     elif count == 5:
         line.replace("'", "\"")
         date_forkCount = ast.literal_eval(line)
-    '''
     elif count == 7:
         line = line.strip().split(",")
         for index in range(len(line) - 1):
@@ -60,21 +59,13 @@ for line in inFile:
         line = line.strip().split(",")
         for index in range(len(line) - 1):
             repo_userCount.append(int(line[index]))
-    '''
     count += 1
 
 
-for date in date_pushCount:
-    date = datetime.strptime(date, '%Y-%m-%d-%I')
     
 print "Plotting 1st..."
-x1, y1 = dic_plot(date_pushCount)
-x2, y2 = dic_plot(date_pullCount)
-x3, y3 = dic_plot(date_forkCount)
-plt.plot(x1, y1, "r+", markersize = 1, label = "pushEvent")
-plt.plot(x2, y2, "y+", markersize = 1, label = "pullRequestEvent")
-plt.plot(x3, y3, "b+", markersize = 1, label = "forkEvent")
-plt.title("Number of events over time")
-plt.xlabel("date")
-plt.ylabel("number of events")
-plt.savefig("date_EventCount.jpg", dpi = 600)
+plt.hist(repo_pushCount, "r+", markersize = 1)
+plt.title("Distribution: Number of pushes in a repo")
+plt.xlabel("number of pushes")
+plt.ylabel("number of repos with the corresponding number of pushes")
+plt.savefig("push distribution.jpg", dpi = 600)
