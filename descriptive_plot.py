@@ -64,7 +64,7 @@ for line in inFile:
 
     
 print "Plotting 1st..."
-plt.hist(repo_pushCount, "r+", markersize = 1)
+plt.hist(repo_pushCount)
 plt.title("Distribution: Number of pushes in a repo")
 plt.xlabel("number of pushes")
 plt.ylabel("number of repos with the corresponding number of pushes")
