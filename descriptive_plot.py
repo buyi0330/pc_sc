@@ -65,7 +65,7 @@ for line in inFile:
 
 
 for date in date_pushCount:
-    date = datetime.strptime(date, '%Y-%m-%d-%h')
+    date = datetime.strptime(date, '%Y-%m-%d-%I')
     
 print "Plotting 1st..."
 x1, y1 = dic_plot(date_pushCount)
