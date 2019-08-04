@@ -6,7 +6,7 @@ Created on Sun Aug  4 13:55:21 2019
 """
 import json
 import matplotlib.pyplot as plt
-
+import ast
 
 # Given a dictionary, return x_list as its key list, and y_list as its value list (correspondingly)
 def dic_plot (dic):
@@ -35,13 +35,13 @@ for line in inFile:
     print count
     if count == 3:
         line.replace("'", "\"")
-        date_pushCount = json.loads(line, strict = False)
+        date_pushCount = ast.literal_eval(line)
     elif count == 4:
         line.replace("'", "\"")
-        date_pullCount = json.loads(line, strict = False)
+        date_pullCount = ast.literal_eval(line)
     elif count == 5:
         line.replace("'", "\"")
-        date_forkCount = json.loads(line, strict = False)
+        date_forkCount = ast.literal_eval(line)
     '''
     elif count == 7:
         line = line.strip().split(",")
