@@ -47,6 +47,7 @@ for line in inFile:
         line = line.strip().split(",")
         for index in range(len(line) - 1):
             repo_pushCount.append(int(line[index]))
+    '''
     elif count == 8:
         line = line.strip().split(",")
         for index in range(len(line) - 1):
@@ -59,12 +60,13 @@ for line in inFile:
         line = line.strip().split(",")
         for index in range(len(line) - 1):
             repo_userCount.append(int(line[index]))
+    '''
     count += 1
 
 
     
 print "Plotting 1st..."
-plt.hist(repo_pushCount)
+plt.hist(repo_pushCount, "r+", markersize = 2)
 plt.title("Distribution: Number of pushes in a repo")
 plt.xlabel("number of pushes")
 plt.ylabel("number of repos with the corresponding number of pushes")
