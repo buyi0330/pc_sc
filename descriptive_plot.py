@@ -60,8 +60,6 @@ for line in inFile:
         for index in range(len(line) - 1):
             repo_userCount.append(int(line[index]))
     '''
-    else:
-        pass
     count += 1
 
 print "Plotting 1st..."
