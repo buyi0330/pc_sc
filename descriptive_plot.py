@@ -7,6 +7,7 @@ Created on Sun Aug  4 13:55:21 2019
 import json
 import matplotlib.pyplot as plt
 import ast
+from datetime import datetime
 
 # Given a dictionary, return x_list as its key list, and y_list as its value list (correspondingly)
 def dic_plot (dic):
@@ -36,10 +37,6 @@ for line in inFile:
     if count == 3:
         line.replace("'", "\"")
         date_pushCount = ast.literal_eval(line)
-        for item in date_pushCount.keys():
-            print item, date_pushCount[item]
-            print type(item)
-            print type(date_pushCount[item])
     elif count == 4:
         line.replace("'", "\"")
         date_pullCount = ast.literal_eval(line)
@@ -66,8 +63,11 @@ for line in inFile:
     '''
     count += 1
 
-print "Plotting 1st..."
 
+for date in date_pushCount:
+    date = datetime.strptime(date, '%Y-%m-%d-%h')
+    
+print "Plotting 1st..."
 x1, y1 = dic_plot(date_pushCount)
 x2, y2 = dic_plot(date_pullCount)
 x3, y3 = dic_plot(date_forkCount)
