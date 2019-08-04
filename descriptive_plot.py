@@ -36,6 +36,10 @@ for line in inFile:
     if count == 3:
         line.replace("'", "\"")
         date_pushCount = ast.literal_eval(line)
+        for item in date_pushCount.keys():
+            print item, date_pushCount[item]
+            print type(item)
+            print type(date_pushCount[item])
     elif count == 4:
         line.replace("'", "\"")
         date_pullCount = ast.literal_eval(line)
