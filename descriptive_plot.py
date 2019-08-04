@@ -35,13 +35,13 @@ for line in inFile:
     print count
     if count == 3:
         line.replace("'", "\"")
-        date_pushCount = json.loads(line)
+        date_pushCount = json.loads(line, strict = False)
     elif count == 4:
         line.replace("'", "\"")
-        date_pullCount = json.loads(line)
+        date_pullCount = json.loads(line, strict = False)
     elif count == 5:
         line.replace("'", "\"")
-        date_forkCount = json.loads(line)
+        date_forkCount = json.loads(line, strict = False)
     '''
     elif count == 7:
         line = line.strip().split(",")
