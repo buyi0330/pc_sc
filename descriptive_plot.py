@@ -25,7 +25,7 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
     for item in temp_dict.keys():
         sum_0 += temp_dict[item]
     for item in temp_dict.keys():
-        pdf_dict[key] = float(temp_dict[key]) / float(sum_0)
+        pdf_dict[item] = float(temp_dict[item]) / float(sum_0)
     x2, y2 = dic_plot (pdf_dict)
     
     plt.subplot(1,2,1)
@@ -42,7 +42,7 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
     plt.xscale("log")
     plt.yscale("log")
     
-    #plt.subplots_adjust (left = 2, right = 4, top = 4, bottom = 2, wspace = 0.5, hspace = 0.5)
+    plt.subplots_adjust (left = 2, right = 4, top = 4, bottom = 2, wspace = 0.5, hspace = 0.5)
     plt.savefig(str(path_name) + "/" + str(file_name) + ".jpg", dpi = 600)
     plt.close()
     
