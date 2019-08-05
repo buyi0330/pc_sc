@@ -20,6 +20,7 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
     
     # Calculating PDF
     sum = 0
+    pdf_dict = {}
     for item in temp_dict.keys():
         sum += temp_dict[item]
     for item in temp_dict.keys():
@@ -73,7 +74,6 @@ repo_userCount = []
 
 count = 3
 for line in inFile:
-    print count
     if count == 3:
         line.replace("'", "\"")
         date_pushCount = ast.literal_eval(line)
@@ -87,8 +87,6 @@ for line in inFile:
         line = line.strip().split(",")
         for index in range(len(line) - 1):
             repo_pushCount.append(int(line[index]))
-        for index in range(100):
-            print repo_pushCount[index]
     elif count == 8:
         line = line.strip().split(",")
         for index in range(len(line) - 1):
@@ -106,4 +104,4 @@ for line in inFile:
 scatter_pdf(repo_pushCount, "/kellogg/proj/ybo1623", "push distribution", "pushes")
 scatter_pdf(repo_pullCount, "/kellogg/proj/ybo1623", "pull distribution", "pulls")
 scatter_pdf(repo_forkCount, "/kellogg/proj/ybo1623", "fork distribution", "forks")
-scatter_pdf(repo_forkCount, "/kellogg/proj/ybo1623", "user distribution", "users")
+scatter_pdf(repo_userCount, "/kellogg/proj/ybo1623", "user distribution", "users")
