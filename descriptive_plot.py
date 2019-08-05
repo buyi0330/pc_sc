@@ -30,7 +30,6 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
     
     plt.subplot(1,2,1)
     plt.plot(x1, y1, "r+", markersize = 1)
-    plt.title("Raw distribution: Number of " + str(event_name) + " in a repo")
     plt.xlabel("number of " + str(event_name))
     plt.ylabel("number of repos")
     plt.xscale("log")
@@ -38,7 +37,6 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
     
     plt.subplot(1,2,2)
     plt.plot(x2, y2, "r+", markersize = 1)
-    plt.title("PDF: Number of " + str(event_name) + " in a repo")
     plt.xlabel("number of " + str(event_name))
     plt.ylabel("PDF")
     plt.xscale("log")
