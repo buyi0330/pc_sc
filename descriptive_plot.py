@@ -11,7 +11,7 @@ import ast
 from collections import Counter
 
 def scatter_pdf (a_list, path_name, file_name, event_name):
-    
+
     # Calculating raw distribution
     temp_counter = Counter(a_list)
     temp_dict = {}
@@ -28,6 +28,10 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
         pdf_dict[item] = float(temp_dict[item]) / float(sum_0)
     x2, y2 = dic_plot (pdf_dict)
     
+    if event_name == "pulls":
+        print x2[1]
+        print y2[1]
+        
     plt.subplot(1,2,1)
     plt.plot(x1, y1, "r+", markersize = 1)
     plt.xlabel("number of " + str(event_name))
@@ -106,10 +110,14 @@ plt.plot(repo_userCount, repo_pushCount, "r+", markersize = 2)
 plt.xlabel("number of users in a repo")
 plt.ylabel("number of pushes in a repo")
 plt.title("user vs. push")
+plt.xscale("log")
+plt.yscale("log")
 plt.savefig("/kellogg/proj/ybo1623/user_push.jpg", dpi = 600)
 
 plt.plot(repo_userCount, repo_pullCount, "r+", markersize = 2)
 plt.xlabel("number of users in a repo")
 plt.ylabel("number of pulls in a repo")
 plt.title("user vs. pull")
+plt.xscale("log")
+plt.yscale("log")
 plt.savefig("/kellogg/proj/ybo1623/user_pull.jpg", dpi = 600)
