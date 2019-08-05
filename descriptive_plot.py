@@ -18,17 +18,14 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
     for key, value in temp_counter.items():
         temp_dict[key] = value
     x1, y1 = dic_plot (temp_dict)
-    for index in range(20):
-        print x1[index]
-        print y1[index]
         
     # Calculating PDF
-    sum = 0
+    sum0 = 0.0
     pdf_dict = {}
     for item in temp_dict.keys():
-        sum += temp_dict[item]
+        sum0 += temp_dict[item]
     for item in temp_dict.keys():
-        pdf_dict[key] = float(temp_dict[key]) / float(sum)
+        pdf_dict[key] = float(temp_dict[key]) / float(sum0)
     x2, y2 = dic_plot (pdf_dict)
     
     plt.subplot(1,2,1)
@@ -47,6 +44,7 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
     plt.xscale("log")
     plt.yscale("log")
     
+    plt.tight_layout()
     #plt.subplots_adjust (left = 2, right = 4, top = 4, bottom = 2, wspace = 0.5, hspace = 0.5)
     plt.savefig(str(path_name) + "/" + str(file_name) + ".jpg", dpi = 600)
     
@@ -103,9 +101,9 @@ for line in inFile:
     count += 1
 
 scatter_pdf(repo_pushCount, "/kellogg/proj/ybo1623", "push distribution", "pushes")
-#scatter_pdf(repo_pullCount, "/kellogg/proj/ybo1623", "pull distribution", "pulls")
-#scatter_pdf(repo_forkCount, "/kellogg/proj/ybo1623", "fork distribution", "forks")
-#scatter_pdf(repo_userCount, "/kellogg/proj/ybo1623", "user distribution", "users")
+scatter_pdf(repo_pullCount, "/kellogg/proj/ybo1623", "pull distribution", "pulls")
+scatter_pdf(repo_forkCount, "/kellogg/proj/ybo1623", "fork distribution", "forks")
+scatter_pdf(repo_userCount, "/kellogg/proj/ybo1623", "user distribution", "users")
 '''
 plt.plot(repo_userCount, repo_pushCount, "r+", markersize = 2)
 plt.xlabel("number of users in a repo")
