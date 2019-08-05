@@ -9,6 +9,46 @@ import matplotlib.pyplot as plt
 import ast
 from collections import Counter
 
+def scatter_pdf (a_list, path_name, file_name, event_name):
+    
+    # Calculating raw distribution
+    temp_counter = Counter(a_list)
+    temp_dict = {}
+    for key, value in temp_counter.items():
+        temp_dict[key] = value
+    x1, y1 = dic_plot (temp_dict)
+    
+    # Calculating PDF
+    sum = 0
+    for item in temp_dict.keys():
+        sum += temp_dict[item]
+    pdf_dict
+    for item in temp_dict.keys():
+        pdf_dict[key] = float(temp_dict[key]) / float(sum)
+    x2, y2 = dic_plot (pdf_dict)
+    
+    plt.figure(figsize=(10,5))
+    matplotlib.rcParams['agg.path.chunksize'] = 10000
+    
+    plt.subplot(1,2,1)
+    plt.plot(x1, y1, "r+", markersize = 1)
+    plt.title("Raw distribution: Number of " + str(event_name) + " in a repo")
+    plt.xlabel("number of " + str(event_name))
+    plt.ylabel("number of repos")
+    plt.xscale("log")
+    plt.yscale("log")
+    
+    plt.subplot(1,2,2)
+    plt.plot(x2, y2, "r+", markersize = 1)
+    plt.title("PDF: Number of " + str(event_name) + " in a repo")
+    plt.xlabel("number of " + str(event_name))
+    plt.ylabel("PDF")
+    plt.xscale("log")
+    plt.yscale("log")
+    
+    plt.subplots_adjust (left = 2, right = 4, top = 4, bottom = 2, wspace = 0.5, hspace = 0.5)
+    plt.savefig(str(path_name) + "/" + str(file_name) + ".jpg", dpi = 600)
+    
 # Given a dictionary, return x_list as its key list, and y_list as its value list (correspondingly)
 def dic_plot (dic):
     x_list = []
@@ -18,7 +58,8 @@ def dic_plot (dic):
         y_list.append(dic[item])
     return x_list, y_list
 
-
+# main function starts here...
+    
 inFile = open("/kellogg/proj/ybo1623/temp_descriptive.txt", "r")
 inFile.readline()
 inFile.readline()
@@ -49,7 +90,6 @@ for line in inFile:
             repo_pushCount.append(int(line[index]))
         for index in range(100):
             print repo_pushCount[index]
-    '''
     elif count == 8:
         line = line.strip().split(",")
         for index in range(len(line) - 1):
@@ -62,21 +102,9 @@ for line in inFile:
         line = line.strip().split(",")
         for index in range(len(line) - 1):
             repo_userCount.append(int(line[index]))
-    '''
     count += 1
 
-
-    
-print "Plotting 1st..."
-push_counter = Counter(repo_pushCount)
-push_dict = {}
-for key, value in push_counter.items():
-    push_dict[key] = value
-x, y = dic_plot (push_dict)
-plt.plot(x, y, "r+", markersize = 1)
-plt.title("Distribution: Number of pushes in a repo")
-plt.xlabel("number of pushes")
-plt.ylabel("number of repos with the corresponding number of pushes")
-plt.xscale("log")
-plt.yscale("log")
-plt.savefig("/kellogg/proj/ybo1623/push distribution.jpg", dpi = 600)
+scatter_pdf(repo_pushCount, "/kellogg/proj/ybo1623", "push distribution", "pushes")
+scatter_pdf(repo_pullCount, "/kellogg/proj/ybo1623", "pull distribution", "pulls")
+scatter_pdf(repo_forkCount, "/kellogg/proj/ybo1623", "fork distribution", "forks")
+scatter_pdf(repo_forkCount, "/kellogg/proj/ybo1623", "user distribution", "users")
