@@ -22,7 +22,6 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
     sum = 0
     for item in temp_dict.keys():
         sum += temp_dict[item]
-    pdf_dict
     for item in temp_dict.keys():
         pdf_dict[key] = float(temp_dict[key]) / float(sum)
     x2, y2 = dic_plot (pdf_dict)
