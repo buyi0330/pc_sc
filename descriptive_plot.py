@@ -68,8 +68,12 @@ for line in inFile:
 
     
 print "Plotting 1st..."
-push_dist = Counter(repo_pushCount)
-plt.plot(push_dist, "r+", markersize = 1)
+push_counter = Counter(repo_pushCount)
+push_dict = {}
+for key, value in push_counter.items():
+    push_dict[key] = value
+x, y = dic_plot (push_dict)
+plt.plot(x, y, "r+", markersize = 1)
 plt.title("Distribution: Number of pushes in a repo")
 plt.xlabel("number of pushes")
 plt.ylabel("number of repos with the corresponding number of pushes")
