@@ -70,7 +70,10 @@ for repo in repo_user.keys():
     repo_push_count.append(push_temp)
     repo_pull_count.append(pull_temp)
     repo_fork_count.append(fork_temp)
-    repo_user_count.append(len(repo_user[repo]))
+    temp_set = set([])
+    for pair in repo_user[repo]:
+        temp_set.add(pair[0])
+    repo_user_count.append(len(temp_set))
 
 outFile = open("/kellogg/proj/ybo1623/temp_descriptive.txt", "w")
 outFile.write("\nnumber of events in different dates\n")
