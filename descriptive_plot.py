@@ -42,8 +42,7 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
     plt.xscale("log")
     plt.yscale("log")
     
-    plt.tight_layout()
-    #plt.subplots_adjust (left = 2, right = 4, top = 4, bottom = 2, wspace = 0.5, hspace = 0.5)
+    plt.subplots_adjust (left = 2, right = 4, top = 4, bottom = 2, wspace = 0.5, hspace = 0.5)
     plt.savefig(str(path_name) + "/" + str(file_name) + ".jpg", dpi = 600)
     
 # Given a dictionary, return x_list as its key list, and y_list as its value list (correspondingly)
