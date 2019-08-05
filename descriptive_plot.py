@@ -68,9 +68,8 @@ for line in inFile:
 
     
 print "Plotting 1st..."
-print min(repo_pushCount), max(repo_pushCount)
 push_dist = Counter(repo_pushCount)
-plt.plot(repo_pushCount, "r+", markersize = 1)
+plt.plot(push_dist, "r+", markersize = 1)
 plt.title("Distribution: Number of pushes in a repo")
 plt.xlabel("number of pushes")
 plt.ylabel("number of repos with the corresponding number of pushes")
