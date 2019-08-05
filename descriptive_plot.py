@@ -42,7 +42,6 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
     plt.xscale("log")
     plt.yscale("log")
     
-    #plt.subplots_adjust (left = 2, right = 4, top = 4, bottom = 2, wspace = 0.5, hspace = 0.5)
     plt.savefig(str(path_name) + "/" + str(file_name) + ".jpg", dpi = 600)
     plt.close()
     
@@ -99,10 +98,10 @@ for line in inFile:
     count += 1
 
 scatter_pdf(repo_pushCount, "/kellogg/proj/ybo1623", "push distribution", "pushes")
-#scatter_pdf(repo_pullCount, "/kellogg/proj/ybo1623", "pull distribution", "pulls")
-#scatter_pdf(repo_forkCount, "/kellogg/proj/ybo1623", "fork distribution", "forks")
-#scatter_pdf(repo_userCount, "/kellogg/proj/ybo1623", "user distribution", "users")
-'''
+scatter_pdf(repo_pullCount, "/kellogg/proj/ybo1623", "pull distribution", "pulls")
+scatter_pdf(repo_forkCount, "/kellogg/proj/ybo1623", "fork distribution", "forks")
+scatter_pdf(repo_userCount, "/kellogg/proj/ybo1623", "user distribution", "users")
+
 plt.plot(repo_userCount, repo_pushCount, "r+", markersize = 2)
 plt.xlabel("number of users in a repo")
 plt.ylabel("number of pushes in a repo")
@@ -114,4 +113,3 @@ plt.xlabel("number of users in a repo")
 plt.ylabel("number of pulls in a repo")
 plt.title("user vs. pull")
 plt.savefig("/kellogg/proj/ybo1623/user_pull.jpg", dpi = 600)
-'''
