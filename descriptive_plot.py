@@ -4,7 +4,8 @@ Created on Sun Aug  4 13:55:21 2019
 
 @author: Yi Bu
 """
-import json
+
+import matplotlib
 import matplotlib.pyplot as plt
 import ast
 from collections import Counter
@@ -105,3 +106,15 @@ scatter_pdf(repo_pushCount, "/kellogg/proj/ybo1623", "push distribution", "pushe
 scatter_pdf(repo_pullCount, "/kellogg/proj/ybo1623", "pull distribution", "pulls")
 scatter_pdf(repo_forkCount, "/kellogg/proj/ybo1623", "fork distribution", "forks")
 scatter_pdf(repo_userCount, "/kellogg/proj/ybo1623", "user distribution", "users")
+
+plt.plot(repo_userCount, repo_pushCount, "r+", markersize = 2)
+plt.xlabel("number of users in a repo")
+plt.ylabel("number of pushes in a repo")
+plt.title("user vs. push")
+plt.savefig("user_push.jpg", dpi = 600)
+
+plt.plot(repo_userCount, repo_pullCount, "r+", markersize = 2)
+plt.xlabel("number of users in a repo")
+plt.ylabel("number of pulls in a repo")
+plt.title("user vs. pull")
+plt.savefig("user_pull.jpg", dpi = 600)
