@@ -18,7 +18,10 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
     for key, value in temp_counter.items():
         temp_dict[key] = value
     x1, y1 = dic_plot (temp_dict)
-    
+    for index in range(20):
+        print x1[index]
+        print y1[index]
+        
     # Calculating PDF
     sum = 0
     pdf_dict = {}
@@ -27,9 +30,6 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
     for item in temp_dict.keys():
         pdf_dict[key] = float(temp_dict[key]) / float(sum)
     x2, y2 = dic_plot (pdf_dict)
-    
-    plt.figure(figsize=(10,5))
-    matplotlib.rcParams['agg.path.chunksize'] = 10000
     
     plt.subplot(1,2,1)
     plt.plot(x1, y1, "r+", markersize = 1)
@@ -47,7 +47,7 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
     plt.xscale("log")
     plt.yscale("log")
     
-    plt.subplots_adjust (left = 2, right = 4, top = 4, bottom = 2, wspace = 0.5, hspace = 0.5)
+    #plt.subplots_adjust (left = 2, right = 4, top = 4, bottom = 2, wspace = 0.5, hspace = 0.5)
     plt.savefig(str(path_name) + "/" + str(file_name) + ".jpg", dpi = 600)
     
 # Given a dictionary, return x_list as its key list, and y_list as its value list (correspondingly)
