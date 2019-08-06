@@ -109,13 +109,16 @@ for line in inFile:
         for index in range(len(line) - 1):
             repo_userCount.append(int(line[index]))
     count += 1
-'''
-scatter_pdf(repo_pushCount, "/kellogg/proj/ybo1623", "push distribution", "pushes")
+
+
+#scatter_pdf(repo_pushCount, "/kellogg/proj/ybo1623", "push distribution", "pushes")
 scatter_pdf(repo_pullCount, "/kellogg/proj/ybo1623", "pull distribution", "pulls")
-scatter_pdf(repo_forkCount, "/kellogg/proj/ybo1623", "fork distribution", "forks")
-scatter_pdf(repo_userCount, "/kellogg/proj/ybo1623", "user distribution", "users")
- '''
+#scatter_pdf(repo_forkCount, "/kellogg/proj/ybo1623", "fork distribution", "forks")
+#scatter_pdf(repo_userCount, "/kellogg/proj/ybo1623", "user distribution", "users")
+
 bin_set = np.logspace(1, 7, 7)
 H, x, y = np.histogram2d(repo_userCount, repo_pushCount, [bin_set, bin_set])
 plt.imshow(H)
+plt.xscale("log")
+plt.yscale("log")
 plt.savefig("/kellogg/proj/ybo1623/user_push.jpg", dpi = 600)
