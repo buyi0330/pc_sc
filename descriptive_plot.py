@@ -105,12 +105,12 @@ scatter_pdf(repo_userCount, "/kellogg/proj/ybo1623", "user distribution", "users
 
 temp_array_1 = map(list,zip(repo_userCount, repo_pushCount))
 ax_1 = sns.heatmap(temp_array_1)
-ax_1.savefig("/kellogg/proj/ybo1623/user_push.jpg", dpi = 600)
+ax_1.figure.savefig("/kellogg/proj/ybo1623/user_push.jpg", dpi = 600)
 
 
 temp_array_2 = map(list,zip(repo_userCount, repo_pullCount))
 ax_2 = sns.heatmap(temp_array_2)
-ax_2.savefig("/kellogg/proj/ybo1623/user_pull.jpg", dpi = 600)
+ax_2.figure.savefig("/kellogg/proj/ybo1623/user_pull.jpg", dpi = 600)
 
 '''
 plt.plot(repo_userCount, repo_pushCount, "r+", markersize = 2)
