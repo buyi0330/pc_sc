@@ -14,7 +14,23 @@ import pandas as pd
 import numpy as np
 
 def scatter_pdf (a_list, path_name, file_name, event_name):
-
+    
+    plt.subplot(1,2,1)
+    bins = np.logspace(min(a_list), max(a_list), num = 40)
+    plt.hist(np.asarray(a_list), bins = bins, density = None)
+    plt.xlabel("number of " + str(event_name))
+    plt.ylabel("number of repos")
+    
+    plt.subplot(1,2,2)
+    total_sum = np.sum([item for item in y1])
+    bins = np.logspace(min(np.asarray(a_list)/np.asarray(total_sum)), max(np.asarray(a_list)/np.asarray(total_sum)), num = 40)
+    plt.hist(np.asarray(a_list)/np.asarray(total_sum), bins = bins, density = None)
+    plt.xlabel("number of " + str(event_name))
+    plt.ylabel("PDF")
+    
+    plt.savefig(str(path_name) + "/" + str(file_name) + ".jpg", dpi = 600)
+    plt.close()
+    
     # Calculating raw distribution
     temp_counter = Counter(a_list)
     temp_dict = {}
@@ -45,21 +61,6 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
     plt.xscale("log")
     plt.yscale("log")
     '''
-    
-    plt.subplot(1,2,1)
-    bins = np.logspace(min(x1), max(x1), num = 40)
-    plt.loglog(x1, y1, bin = bins)
-    plt.xlabel("number of " + str(event_name))
-    plt.ylabel("number of repos")
-    
-    plt.subplot(1,2,2)
-    bins = np.logspace(min(x2), max(x2), num = 40)
-    plt.loglog(x2, y2, bin = bins)
-    plt.xlabel("number of " + str(event_name))
-    plt.ylabel("PDF")
-    
-    plt.savefig(str(path_name) + "/" + str(file_name) + ".jpg", dpi = 600)
-    plt.close()
     
 # Given a dictionary, return x_list as its key list, and y_list as its value list (correspondingly)
 def dic_plot (dic):
