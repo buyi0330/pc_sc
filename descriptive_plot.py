@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import ast
 from collections import Counter
 import seaborn as sns
+import pandas as pd
 
 def scatter_pdf (a_list, path_name, file_name, event_name):
 
@@ -97,12 +98,25 @@ for line in inFile:
         for index in range(len(line) - 1):
             repo_userCount.append(int(line[index]))
     count += 1
-
+'''
 scatter_pdf(repo_pushCount, "/kellogg/proj/ybo1623", "push distribution", "pushes")
 scatter_pdf(repo_pullCount, "/kellogg/proj/ybo1623", "pull distribution", "pulls")
 scatter_pdf(repo_forkCount, "/kellogg/proj/ybo1623", "fork distribution", "forks")
 scatter_pdf(repo_userCount, "/kellogg/proj/ybo1623", "user distribution", "users")
+'''
+                
 
+user_bin = [0, 1, 10, 100, 1000, 10000, 100000]
+push_bin = [0, 1, 10, 100, 1000, 10000, 100000]
+
+df_1 = pd.DataFrame({'userCount': repo_userCount, 'pushCount': repo_pushCount})
+#pd.cut(df_1['userCount'], bins = user_bin)
+#tab = pd.crosstab(df_1['userCount'], df_2['pushCount'])
+
+xx = df_1.groupby(['userCount', 'pushCount']).count()
+print type(xx)
+print len(xx)
+'''
 temp_array_1 = map(list,zip(repo_userCount, repo_pushCount))
 ax_1 = sns.heatmap(temp_array_1)
 ax_1.figure.savefig("/kellogg/proj/ybo1623/user_push.jpg", dpi = 600)
@@ -111,7 +125,7 @@ ax_1.figure.savefig("/kellogg/proj/ybo1623/user_push.jpg", dpi = 600)
 temp_array_2 = map(list,zip(repo_userCount, repo_pullCount))
 ax_2 = sns.heatmap(temp_array_2)
 ax_2.figure.savefig("/kellogg/proj/ybo1623/user_pull.jpg", dpi = 600)
-
+'''
 '''
 plt.plot(repo_userCount, repo_pushCount, "r+", markersize = 2)
 plt.xlabel("number of users in a repo")
