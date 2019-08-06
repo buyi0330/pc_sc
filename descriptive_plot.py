@@ -50,9 +50,9 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
     plt.close()
 
 def scatter_pdf_2 (a_list, path_name, file_name, event_name):
-    
+    bin_set = np.logspace(0, 7, 50)
     plt.subplot(1,1,1)
-    plt.hist(a_list, bins = [1,10,100,1000,10000])
+    plt.hist(a_list, bins = bin_set)
     plt.xscale("log")
     plt.yscale("log")
     plt.savefig(str(path_name) + "/" + str(file_name) + ".jpg", dpi = 600)
