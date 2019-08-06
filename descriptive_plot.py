@@ -48,7 +48,12 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
     
     plt.savefig(str(path_name) + "/" + str(file_name) + ".jpg", dpi = 600)
     plt.close()
-    print np.median(a_list)
+    print temp_counter[1]
+    print temp_counter[2]
+    print temp_counter[3]
+    print temp_counter[4]
+    print temp_counter[5]
+    print temp_counter[6]
 
 def scatter_pdf_2 (a_list, path_name, file_name, event_name):
     bin_set = np.logspace(0, 7, 50)
