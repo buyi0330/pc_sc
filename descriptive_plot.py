@@ -11,6 +11,7 @@ import ast
 from collections import Counter
 import seaborn as sns
 import pandas as pd
+import numpy as np
 
 def scatter_pdf (a_list, path_name, file_name, event_name):
 
@@ -109,13 +110,10 @@ scatter_pdf(repo_userCount, "/kellogg/proj/ybo1623", "user distribution", "users
 user_bin = [0, 1, 10, 100, 1000, 10000, 100000]
 push_bin = [0, 1, 10, 100, 1000, 10000, 100000]
 
+x1, y1, z1 = np.histogram2d (repo_userCount, repo_pushCount, bins = [user_bin, push_bin], density = None)
 df_1 = pd.DataFrame({'userCount': repo_userCount, 'pushCount': repo_pushCount})
-#pd.cut(df_1['userCount'], bins = user_bin)
-#tab = pd.crosstab(df_1['userCount'], df_2['pushCount'])
-
-xx = df_1.groupby(['userCount', 'pushCount']).count()
-print type(xx)
-print len(xx)
+ax_1 = sns.heatmap(df_1)
+ax_1.figure.savefig("/kellogg/proj/ybo1623/user_push.jpg", dpi = 600)
 '''
 temp_array_1 = map(list,zip(repo_userCount, repo_pushCount))
 ax_1 = sns.heatmap(temp_array_1)
