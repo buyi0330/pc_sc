@@ -17,14 +17,14 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
     
     plt.subplot(1,2,1)
     bins = np.logspace(min(a_list), max(a_list), num = 40)
-    plt.hist(np.asarray(a_list), bins = bins, density = None)
+    plt.hist(np.asarray(a_list), bin = bins, density = None)
     plt.xlabel("number of " + str(event_name))
     plt.ylabel("number of repos")
     
     plt.subplot(1,2,2)
     total_sum = np.sum([item for item in y1])
     bins = np.logspace(min(np.asarray(a_list)/np.asarray(total_sum)), max(np.asarray(a_list)/np.asarray(total_sum)), num = 40)
-    plt.hist(np.asarray(a_list)/np.asarray(total_sum), bins = bins, density = None)
+    plt.hist(np.asarray(a_list)/np.asarray(total_sum), bin = bins, density = None)
     plt.xlabel("number of " + str(event_name))
     plt.ylabel("PDF")
     
