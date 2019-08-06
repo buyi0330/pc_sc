@@ -115,43 +115,8 @@ scatter_pdf(repo_pushCount, "/kellogg/proj/ybo1623", "push distribution", "pushe
 scatter_pdf(repo_pullCount, "/kellogg/proj/ybo1623", "pull distribution", "pulls")
 scatter_pdf(repo_forkCount, "/kellogg/proj/ybo1623", "fork distribution", "forks")
 scatter_pdf(repo_userCount, "/kellogg/proj/ybo1623", "user distribution", "users")
-                
-'''
-user_bin = [0, 1, 10, 100, 1000, 10000, 100000]
-push_bin = [0, 1, 10, 100, 1000, 10000, 100000]
-bin_1 = []
-bin_1.append(user_bin)
-bin_1.append(push_bin)
-array_1, xedge_1, yedge_1 = np.histogram2d (repo_userCount, repo_pushCount, bins = bin_1)
-ax_1 = sns.heatmap(array_1)
-ax_1.xscale("log")
-ax_1.yscale("log")
-ax_1.figure.savefig("/kellogg/proj/ybo1623/user_push.jpg", dpi = 600)
-'''
-'''
-temp_array_1 = map(list,zip(repo_userCount, repo_pushCount))
-ax_1 = sns.heatmap(temp_array_1)
-ax_1.figure.savefig("/kellogg/proj/ybo1623/user_push.jpg", dpi = 600)
+ 
 
-
-temp_array_2 = map(list,zip(repo_userCount, repo_pullCount))
-ax_2 = sns.heatmap(temp_array_2)
-ax_2.figure.savefig("/kellogg/proj/ybo1623/user_pull.jpg", dpi = 600)
-'''
-'''
-plt.plot(repo_userCount, repo_pushCount, "r+", markersize = 2)
-plt.xlabel("number of users in a repo")
-plt.ylabel("number of pushes in a repo")
-plt.title("user vs. push")
-plt.xscale("log")
-plt.yscale("log")
+H, x, y = np.histogram2d(repo_userCount, repo_pushCount, [7,7])
+plt.imshow(H)
 plt.savefig("/kellogg/proj/ybo1623/user_push.jpg", dpi = 600)
-
-plt.plot(repo_userCount, repo_pullCount, "r+", markersize = 2)
-plt.xlabel("number of users in a repo")
-plt.ylabel("number of pulls in a repo")
-plt.title("user vs. pull")
-plt.xscale("log")
-plt.yscale("log")
-plt.savefig("/kellogg/proj/ybo1623/user_pull.jpg", dpi = 600)
-'''
