@@ -28,17 +28,6 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
     for item in temp_dict.keys():
         pdf_dict[item] = float(temp_dict[item]) / float(sum_0)
     x2, y2 = dic_plot (pdf_dict)
-    
-    print x1[1]
-    print y1[1]
-    print x1[2]
-    print y1[2]
-    print x1[3]
-    print y1[3]
-    print x1[4]
-    print y1[4]
-    print x1[5]
-    print y1[5]
         
     plt.subplot(1,2,1)
     plt.plot(x1, y1, "r+", markersize = 1)
@@ -115,12 +104,12 @@ scatter_pdf(repo_forkCount, "/kellogg/proj/ybo1623", "fork distribution", "forks
 scatter_pdf(repo_userCount, "/kellogg/proj/ybo1623", "user distribution", "users")
 
 temp_array_1 = map(list,zip(repo_userCount, repo_pushCount))
-ax_1 = sns.heatmap(temp_array)
+ax_1 = sns.heatmap(temp_array_1)
 ax_1.savefig("/kellogg/proj/ybo1623/user_push.jpg", dpi = 600)
 
 
 temp_array_2 = map(list,zip(repo_userCount, repo_pullCount))
-ax_2 = sns.heatmap(temp_array)
+ax_2 = sns.heatmap(temp_array_2)
 ax_2.savefig("/kellogg/proj/ybo1623/user_pull.jpg", dpi = 600)
 
 '''
