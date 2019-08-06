@@ -48,12 +48,8 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
     
     plt.savefig(str(path_name) + "/" + str(file_name) + ".jpg", dpi = 600)
     plt.close()
-    print temp_counter[1]
-    print temp_counter[2]
-    print temp_counter[3]
-    print temp_counter[4]
-    print temp_counter[5]
-    print temp_counter[6]
+    for index in range(1000):
+        print str(index) + ": " + str(temp_counter[index])
 
 def scatter_pdf_2 (a_list, path_name, file_name, event_name):
     bin_set = np.logspace(0, 7, 50)
@@ -120,11 +116,3 @@ for line in inFile:
 scatter_pdf(repo_pullCount, "/kellogg/proj/ybo1623", "pull distribution", "pulls")
 #scatter_pdf(repo_forkCount, "/kellogg/proj/ybo1623", "fork distribution", "forks")
 #scatter_pdf(repo_userCount, "/kellogg/proj/ybo1623", "user distribution", "users")
-'''
-bin_set = np.logspace(1, 7, 7)
-H, x, y = np.histogram2d(repo_userCount, repo_pushCount, [bin_set, bin_set])
-plt.imshow(H)
-plt.xscale("log")
-plt.yscale("log")
-plt.savefig("/kellogg/proj/ybo1623/user_push.jpg", dpi = 600)
-'''
