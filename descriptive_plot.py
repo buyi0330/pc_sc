@@ -30,7 +30,7 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
     for item in temp_dict.keys():
         pdf_dict[item] = float(temp_dict[item]) / float(sum_0)
     x2, y2 = dic_plot (pdf_dict)
-        
+    '''    
     plt.subplot(1,2,1)
     plt.plot(x1, y1, "r+", markersize = 1)
     plt.xlabel("number of " + str(event_name))
@@ -44,6 +44,19 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
     plt.ylabel("PDF")
     plt.xscale("log")
     plt.yscale("log")
+    '''
+    
+    plt.subplot(1,2,1)
+    bins = np.logspace(min(x1), max(x1), num = 40)
+    plt.loglog(x1, y1, bin = bins)
+    plt.xlabel("number of " + str(event_name))
+    plt.ylabel("number of repos")
+    
+    plt.subplot(1,2,2)
+    bins = np.logspace(min(x2), max(x2), num = 40)
+    plt.loglog(x2, y2, bin = bins)
+    plt.xlabel("number of " + str(event_name))
+    plt.ylabel("PDF")
     
     plt.savefig(str(path_name) + "/" + str(file_name) + ".jpg", dpi = 600)
     plt.close()
@@ -99,18 +112,17 @@ for line in inFile:
         for index in range(len(line) - 1):
             repo_userCount.append(int(line[index]))
     count += 1
-'''
+
 scatter_pdf(repo_pushCount, "/kellogg/proj/ybo1623", "push distribution", "pushes")
 scatter_pdf(repo_pullCount, "/kellogg/proj/ybo1623", "pull distribution", "pulls")
 scatter_pdf(repo_forkCount, "/kellogg/proj/ybo1623", "fork distribution", "forks")
 scatter_pdf(repo_userCount, "/kellogg/proj/ybo1623", "user distribution", "users")
-'''
                 
 
 user_bin = [0, 1, 10, 100, 1000, 10000, 100000]
 push_bin = [0, 1, 10, 100, 1000, 10000, 100000]
 
-x1, y1, z1 = np.histogram2d (repo_userCount, repo_pushCount, bins = [user_bin, push_bin], density = None)
+x1, y1, z1 = np.histogram2d (repo_userCount, repo_pushCount, bins = [user_bin, push_bin])
 df_1 = pd.DataFrame({'userCount': repo_userCount, 'pushCount': repo_pushCount})
 ax_1 = sns.heatmap(df_1)
 ax_1.figure.savefig("/kellogg/proj/ybo1623/user_push.jpg", dpi = 600)
