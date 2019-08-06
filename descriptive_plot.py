@@ -15,15 +15,14 @@ import numpy as np
 
 def scatter_pdf (a_list, path_name, file_name, event_name):
     
-    a_counter = Counter(a_list)
-    
-    bin_1 = 10 ** np.linspace(np.log10(min(a_list)), np.log10(max(a_list)), num = 40)
     ax = plt.subplot(1,1,1)
     ax.set_xlabel("number of " + str(event_name))
     ax.set_ylabel("number of repos")
     ax.hist(a_list, normed=True)
     ax.set_xscale('log')
     ax.set_yscale('log')
+    plt.savefig(str(path_name) + "/" + str(file_name) + ".jpg", dpi = 600)
+    plt.close()
 
     '''
     plt.hist(np.asarray(a_list), density = None)
