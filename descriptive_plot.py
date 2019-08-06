@@ -16,7 +16,7 @@ import numpy as np
 def scatter_pdf (a_list, path_name, file_name, event_name):
     
     plt.subplot(1,2,1)
-    bin_1 = np.logspace(1, 7, num = 40)
+    bin_1 = 10 ** np.linspace(np.log10(min(a_list)), np.log10(max(a_list)), num = 40)
     plt.hist(np.asarray(a_list), bins = bin_1, density = None)
     plt.xscale("log")
     plt.yscale("log")
@@ -24,9 +24,10 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
     plt.ylabel("number of repos")
     
     plt.subplot(1,2,2)
-    total_sum = np.sum([item for item in y1])
-    bin_2 = np.logspace(1, 7, num = 40)
-    plt.hist(np.asarray(a_list)/np.asarray(total_sum), bins = bin_2, density = None)
+    bin_1 = 10 ** np.linspace(np.log10(min(a_list)), np.log10(max(a_list)), num = 40)
+    plt.hist(np.asarray(a_list), bins = bin_1, density = None)
+    plt.xscale("log")
+    plt.yscale("log")
     plt.xlabel("number of " + str(event_name))
     plt.ylabel("PDF")
     
