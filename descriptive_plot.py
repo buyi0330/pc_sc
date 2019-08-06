@@ -15,33 +15,6 @@ import numpy as np
 
 def scatter_pdf (a_list, path_name, file_name, event_name):
     
-    ax = plt.subplot(1,1,1)
-    ax.set_xlabel("number of " + str(event_name))
-    ax.set_ylabel("number of repos")
-    ax.hist(a_list, normed=True)
-    ax.set_xscale('log')
-    ax.set_yscale('log')
-    plt.savefig(str(path_name) + "/" + str(file_name) + ".jpg", dpi = 600)
-    plt.close()
-
-    '''
-    plt.hist(np.asarray(a_list), density = None)
-    plt.xscale("log")
-    plt.yscale("log")
-    plt.xlabel("number of " + str(event_name))
-    plt.ylabel("number of repos")
-    
-    plt.subplot(1,2,2)
-    bin_1 = 10 ** np.linspace(np.log10(min(a_list)), np.log10(max(a_list)), num = 40)
-    plt.hist(np.asarray(a_list),density = None)
-    plt.xscale("log")
-    plt.yscale("log")
-    plt.xlabel("number of " + str(event_name))
-    plt.ylabel("PDF")
-    
-    plt.savefig(str(path_name) + "/" + str(file_name) + ".jpg", dpi = 600)
-    plt.close()
-    
     # Calculating raw distribution
     temp_counter = Counter(a_list)
     temp_dict = {}
@@ -57,8 +30,8 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
     for item in temp_dict.keys():
         pdf_dict[item] = float(temp_dict[item]) / float(sum_0)
     x2, y2 = dic_plot (pdf_dict)
-    '''
-    '''    
+
+
     plt.subplot(1,2,1)
     plt.plot(x1, y1, "r+", markersize = 1)
     plt.xlabel("number of " + str(event_name))
@@ -72,8 +45,10 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
     plt.ylabel("PDF")
     plt.xscale("log")
     plt.yscale("log")
-    '''
     
+    plt.savefig(str(path_name) + "/" + str(file_name) + ".jpg", dpi = 600)
+    plt.close()
+        
 # Given a dictionary, return x_list as its key list, and y_list as its value list (correspondingly)
 def dic_plot (dic):
     x_list = []
@@ -134,10 +109,11 @@ scatter_pdf(repo_userCount, "/kellogg/proj/ybo1623", "user distribution", "users
 
 user_bin = [0, 1, 10, 100, 1000, 10000, 100000]
 push_bin = [0, 1, 10, 100, 1000, 10000, 100000]
-
-x1, y1, z1 = np.histogram2d (repo_userCount, repo_pushCount, bins = [user_bin, push_bin])
-df_1 = pd.DataFrame({'userCount': repo_userCount, 'pushCount': repo_pushCount})
-ax_1 = sns.heatmap(df_1)
+bin_1 = []
+bin_1.append(user_bin)
+bin_1.append(push_bin)
+array_1, xedge_1, yedge_1 = np.histogram2d (repo_userCount, repo_pushCount, bins = bin_1)
+ax_1 = sns.heatmap(array_1)
 ax_1.figure.savefig("/kellogg/proj/ybo1623/user_push.jpg", dpi = 600)
 '''
 temp_array_1 = map(list,zip(repo_userCount, repo_pushCount))
