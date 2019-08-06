@@ -9,6 +9,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import ast
 from collections import Counter
+import seaborn as sns
 
 def scatter_pdf (a_list, path_name, file_name, event_name):
 
@@ -28,9 +29,16 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
         pdf_dict[item] = float(temp_dict[item]) / float(sum_0)
     x2, y2 = dic_plot (pdf_dict)
     
-    if event_name == "pulls":
-        print x2[1]
-        print y2[1]
+    print x1[1]
+    print y1[1]
+    print x1[2]
+    print y1[2]
+    print x1[3]
+    print y1[3]
+    print x1[4]
+    print y1[4]
+    print x1[5]
+    print y1[5]
         
     plt.subplot(1,2,1)
     plt.plot(x1, y1, "r+", markersize = 1)
@@ -106,6 +114,16 @@ scatter_pdf(repo_pullCount, "/kellogg/proj/ybo1623", "pull distribution", "pulls
 scatter_pdf(repo_forkCount, "/kellogg/proj/ybo1623", "fork distribution", "forks")
 scatter_pdf(repo_userCount, "/kellogg/proj/ybo1623", "user distribution", "users")
 
+temp_array_1 = map(list,zip(repo_userCount, repo_pushCount))
+ax_1 = sns.heatmap(temp_array)
+ax_1.savefig("/kellogg/proj/ybo1623/user_push.jpg", dpi = 600)
+
+
+temp_array_2 = map(list,zip(repo_userCount, repo_pullCount))
+ax_2 = sns.heatmap(temp_array)
+ax_2.savefig("/kellogg/proj/ybo1623/user_pull.jpg", dpi = 600)
+
+'''
 plt.plot(repo_userCount, repo_pushCount, "r+", markersize = 2)
 plt.xlabel("number of users in a repo")
 plt.ylabel("number of pushes in a repo")
@@ -121,3 +139,4 @@ plt.title("user vs. pull")
 plt.xscale("log")
 plt.yscale("log")
 plt.savefig("/kellogg/proj/ybo1623/user_pull.jpg", dpi = 600)
+'''
