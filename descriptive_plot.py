@@ -17,9 +17,9 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
     
     plt.subplot(1,2,1)
     bin_1 = np.logspace(1, 7, num = 40)
-    print bin_1
-    
     plt.hist(np.asarray(a_list), bins = bin_1, density = None)
+    plt.xscale("log")
+    plt.yscale("log")
     plt.xlabel("number of " + str(event_name))
     plt.ylabel("number of repos")
     
