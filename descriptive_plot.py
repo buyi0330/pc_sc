@@ -21,7 +21,7 @@ def scatter_pdf (a_list, path_name, file_name, event_name):
     ax = plt.subplot(1,1,1)
     ax.set_xlabel("number of " + str(event_name))
     ax.set_ylabel("number of repos")
-    ax.hist(a_counter, normed=True)
+    ax.hist(a_list, normed=True)
     ax.set_xscale('log')
     ax.set_yscale('log')
 
