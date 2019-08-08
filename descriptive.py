@@ -93,6 +93,3 @@ outFile.write("\n")
 for item in repo_user_count:
     outFile.write(str(item) + ",")
 outFile.write("\n")
-
-# visualize data
-# 2. distribution of number of pushes (pulls, forks) in a repo
